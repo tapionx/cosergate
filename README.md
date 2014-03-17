@@ -1,4 +1,4 @@
 cosergate
 =========
 
-Simply manage your money
+Simply manage your money!
