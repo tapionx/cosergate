@@ -7,6 +7,6 @@ urlpatterns = patterns('',
     # Examples:
     # url(r'^$', 'cosergate.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
-
+	url(r'^', include('web.urls')),
     url(r'^admin/', include(admin.site.urls)),
 )
