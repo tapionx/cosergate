@@ -93,7 +93,7 @@
       #content li {
         margin-top: 4px;
       }
-      #register {
+      #signupButton {
         margin-top: 20px;
         font-size: 30px;
         color: white;
@@ -102,10 +102,10 @@
         border: 0px;
         padding: 10px;
       }
-      #register:hover {
+      #signupButton:hover {
         background-color: #FF4D4D;
       }
-      #register-form {
+      #signupButton-form {
         width: 200px;
       }
       a {
@@ -154,13 +154,10 @@
     <div id="main">
       <div id="title">Cosergate</br><span>...e i conti tornano.</span></div>
       <div id="login">
-        <form action="/login" method="POST">
           <input type="text" name="username" placeholder="Nome Utente">
           <input type="password" name="password" placeholder="Password">
           <input type="checkbox" name="remember"><span id="remember">Ricordami</span>
           <input type="submit" name="login" value="login">
-		  {% csrf_token %}
-        </form>
       </div>
       <div id="content">
         <h2>Dividere le spese non è più <br>un problema</h2>
@@ -170,29 +167,47 @@
           <li>Niente più scambi di monetine</li>
           <li>Tieni d'occhio il bilancio con le statistiche</li>
         </ul>
-        <button id="register" type="button">Registrati</button>
+        <button id="signupButton" type="button">Registrati</button>
       </div>
       <div id="signup">
-        <p>Inserisci i tuoi dati per registrarti</p>
-        <form action="/signup" method="POST">
+        <p>Inserisci i tuoi dati per registrarti</p>  
 		  <input type="text" name="username" placeholder="Username">
           <input type="text" name="name" placeholder="Nome">
           <input type="text" name="surname" placeholder="Cognome">
           <input type="text" name="email" placeholder="Email">
           <input type="password" name="password" placeholder="Password">
           <input type="submit" name="signup" value="signup">
-		  {% csrf_token %}
-        </form>
       </div>
       <footer><a href="http://tapion.it">tapion</a> & <a href="https://www.facebook.com/LOLASDLOLASD">mario</a> & cast</footer>
     </div>
+    <div id="home" style="display:none;">
+      <p>ASD</p>
+    </div>
+    
     <script src="//code.jquery.com/jquery.js"></script>
     <script>
       $(document).ready(function(){
-        $('#register').click(function(){
+        $('#signupButton').click(function(){
           $('#content').fadeOut(function(){$('#signup').fadeIn()});
-          
+        
         });
+
+		$('#login input[name="login"]').click(function(){
+		  var username = $('#login input[name="username"]').val();
+		  var password = $('#login input[name="password"]').val();
+		  //var csrf = $('#login input[name="csrfmiddlewaretoken"]').val();
+		  $.post('/login', 
+		  		{username: username, password: password, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+		  		function(data){
+		  		 	if (data == 'login_succeed') {
+		  		 		$('#main').fadeOut(function(){$('#home').fadeIn()});
+		  		 	}
+		  		 	if (data == 'login_failed') {
+		  		 		alert('wrong name or password');
+		  		 	}
+		  		}
+		  );
+		});
       });
     </script>
 	</body>

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
@@ -16,15 +16,15 @@ def cosergate_login(request):
 	if user is not None:
 		if user.is_active:
 			login(request, user)
-			return HttpResponse('login success')
+			return HttpResponse('login_succeed')
 		else:
 			return HttpResponse('disabled user')
 	else:
-		return HttpResponse('wrong username or password')
+		return HttpResponse('login_failed')
 
 def cosergate_logout(request):
 	logout(request)
-	return HttpResponse('logout ok')
+	return redirect('/')
 
 def cosergate_signup(request):
 	username = request.POST['username']
