@@ -159,6 +159,7 @@
           <input type="password" name="password" placeholder="Password">
           <input type="checkbox" name="remember"><span id="remember">Ricordami</span>
           <input type="submit" name="login" value="login">
+		  {% csrf_token %}
         </form>
       </div>
       <div id="content">
@@ -173,12 +174,14 @@
       </div>
       <div id="signup">
         <p>Inserisci i tuoi dati per registrarti</p>
-        <form action="/register" method="POST">
+        <form action="/signup" method="POST">
+		  <input type="text" name="username" placeholder="Username">
           <input type="text" name="name" placeholder="Nome">
           <input type="text" name="surname" placeholder="Cognome">
           <input type="text" name="email" placeholder="Email">
           <input type="password" name="password" placeholder="Password">
-          <input type="submit" name="signup" value="Registrati">
+          <input type="submit" name="signup" value="signup">
+		  {% csrf_token %}
         </form>
       </div>
       <footer><a href="http://tapion.it">tapion</a> & <a href="https://www.facebook.com/LOLASDLOLASD">mario</a> & cast</footer>
