@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
 	if request.user.is_authenticated():
-		return render(request, 'web/home.html', {})
+		return redirect('/home')
 	else:
 		return render(request, 'web/main.html', {})
 
@@ -17,7 +17,7 @@ def cosergate_login(request):
 	if user is not None:
 		if user.is_active:
 			login(request, user)
-			return HttpResponse('login_succeed')
+			return redirect('/home') 
 		else:
 			return HttpResponse('disabled user')
 	else:
