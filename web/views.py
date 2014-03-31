@@ -8,7 +8,7 @@ def index(request):
 	if request.user.is_authenticated():
 		return render(request, 'web/home.html', {})
 	else:
-		return render(request, 'web/index.html', {})
+		return render(request, 'web/main.html', {})
 
 def cosergate_login(request):
 	username = request.POST['username']

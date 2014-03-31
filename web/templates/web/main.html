@@ -1,0 +1,68 @@
+{% extends "web/base.html" %}
+
+{% block content %}
+
+<!-- MAIN -->
+<div id="main">
+	<div id="title">Cosergate</br><span>...e i conti tornano.</span></div>
+	<div id="login">
+		<input type="text" name="username" placeholder="Nome Utente">
+		<input type="password" name="password" placeholder="Password">
+		<input type="checkbox" name="remember"><span id="remember">Ricordami</span>
+		<input type="submit" name="login" value="login">
+</div>
+<div id="content">
+	<h2>Dividere le spese non è più <br>un problema</h2>
+	<ul>
+		<li>Inserisci gli scontrini e le bollette</li>
+		<li>Visualizza quanto devi ridare agli altri</li>
+		<li>Niente più scambi di monetine</li>
+		<li>Tieni d'occhio il bilancio con le statistiche</li>
+	</ul>
+	<button id="signupButton" type="button">Registrati</button>
+</div>
+<div id="signup">
+	<p>Inserisci i tuoi dati per registrarti</p>  
+		<input type="text" name="username" placeholder="Username">
+		<input type="text" name="name" placeholder="Nome">
+		<input type="text" name="surname" placeholder="Cognome">
+		<input type="text" name="email" placeholder="Email">
+		<input type="password" name="password" placeholder="Password">
+		<input type="submit" name="signup" value="signup">
+</div>
+	<footer>
+		<a href="http://tapion.it">tapion</a> & <a href="https://www.facebook.com/LOLASDLOLASD">mario</a> & cast
+	</footer>
+</div>
+<script>
+	$(document).ready(function(){
+		$('#signupButton').click(function(){
+			$('#content').fadeOut(function(){$('#signup').fadeIn()});
+
+		});
+
+		$('#login input[name="login"]').click(function(){
+			var username = $('#login input[name="username"]').val();
+			var password = $('#login input[name="password"]').val();
+			//var csrf = $('#login input[name="csrfmiddlewaretoken"]').val();
+			$.post('/login', 
+				{username: username, password: password, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
+				function(data) {
+					if (data == 'login_succeed') {
+						$.get('/home', 
+							function(data) {
+								$('#main').fadeOut(function() {
+									$('body').append(data);
+								}); 
+							});
+					}
+					if (data == 'login_failed') {
+						alert('wrong name or password');
+					}
+				}
+			);
+		});
+	});
+</script>
+
+{% endblock %}
