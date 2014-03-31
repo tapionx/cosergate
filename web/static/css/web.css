@@ -1,0 +1,140 @@
+html { 
+	background: url( '/static/images/back7.jpg' ) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: 'Raleway', sans-serif;
+}
+body {
+	background-color: inherit;
+	font-family: inherit;
+	line-height: inherit;
+	color: white;
+}
+#main {
+	position: relative;
+	height: 500px;
+	width: 500px;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: rgba(0,0,0,0.8);
+	margin-top: 50px;
+	border-radius: 15px;
+}
+#title {
+	text-shadow: 1px 1px 3px grey;
+	top: 20px;
+	left: 20px;
+	font-size: 45px;
+	position: absolute;
+	color: white;
+}
+#title span {
+	font-size: 27px; 
+	position: relative;
+	top: -18px;
+}
+footer {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+}
+#login {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 200px;
+}
+#login input {
+	font-size: 17px;
+}
+#login input[type=submit] {
+	float: right;
+	background-color: #3042FF;
+	border: 0px;
+	border-radius: 5px;
+	padding: 2px 10px;
+	position: relative;
+	top: 5px;
+	color: white;
+}
+#remember {
+	font-size: 13px;
+	position: relative;
+	top: -2px;
+	left: 2px;
+	color: white;
+}
+#content {
+	text-align: center;
+	position: relative;
+	top: 160px;
+}
+#content h1,h2,h3 {
+	font-family: 'Raleway', sans-serif;
+}
+#content ul {
+	margin-top: 20px;
+	text-align: left;
+	margin-left: 50px;
+	font-size: 18px;
+}
+#content li {
+	margin-top: 4px;
+}
+#signupButton {
+	margin-top: 20px;
+	font-size: 30px;
+	color: white;
+	border-radius: 7px;
+	background-color: red;
+	border: 0px;
+	padding: 10px;
+}
+#signupButton:hover {
+	background-color: #FF4D4D;
+}
+#signupButton-form {
+	width: 200px;
+}
+a {
+	color: #2F28FA;
+}
+input[type=text],input[type=password] {
+	width: 190px;
+	border-radius: 4px;
+	border: 1px solid grey;
+	padding: 3px;
+	color: black;
+}
+input:focus {
+	box-shadow: inset 0px 0px 5px blue;
+}
+#signup {
+	position: relative;
+	top: 130px;
+}
+#signup input {
+	display: block;
+	width: 200px;
+	margin: 5px auto;
+}
+#signup input[type=submit] {
+	width: 208px;
+	height: 45px;
+	margin-top: 10px;
+	font-size: 25px;
+	background-color: red;
+	border: 0px;
+	border-radius: 5px;
+	color: white;
+}
+#signup p {
+	text-shadow: 1px 1px 4px grey;
+	font-size: 30px;
+	text-align: center;
+}
+#signup {
+	display: none;
+}
