@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 	url(r'^', include('web.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^avatar/', include('avatar.urls')),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

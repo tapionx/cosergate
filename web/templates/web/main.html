@@ -22,14 +22,15 @@
 	</ul>
 	<button id="signupButton" type="button">Registrati</button>
 </div>
-<form id="signup" method="POST" action="/signup">
+<form id="signup" method="POST" action="/signup" enctype="multipart/form-data">
 	<p>Inserisci i tuoi dati per registrarti</p>  
-		<input type="text" name="username" placeholder="Username">
-		<input type="text" name="name" placeholder="Nome">
-		<input type="text" name="surname" placeholder="Cognome">
-		<input type="text" name="email" placeholder="Email">
-		<input type="password" name="password" placeholder="Password">
-		<input type="submit" name="signup" value="signup">
+	<input type="text" name="username" placeholder="Username">
+	<input type="text" name="name" placeholder="Nome">
+	<input type="text" name="surname" placeholder="Cognome">
+	<input type="text" name="email" placeholder="Email">
+	<input type="password" name="password" placeholder="Password">
+	<input type="file" name="avatar">
+	<input type="submit" name="signup" value="signup">
     {% csrf_token %}
 </form>
 	<footer>
@@ -38,7 +39,11 @@
 </div>
 <script>
 	$(document).ready(function(){
-    console.log('ready.');
+		$('#signupButton').click(function(){
+			$('#content').fadeOut(function(){$('#signup').fadeIn()});
+
+		});
+		console.log('ready.');
 	});
 </script>
 
