@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 def index(request):
 	if request.user.is_authenticated():
-		return HttpResponse('you have already logged in')
+		return render(request, 'web/home.html', {})
 	else:
 		return render(request, 'web/index.html', {})
 
@@ -42,4 +42,30 @@ def cosergate_signup(request):
 @login_required(login_url='/')
 def home(request):
 	return render(request, 'web/home.html', {})
+
+@login_required(login_url='/')	
+def account(request):
+	user = request.user
+	return render(request, 'web/account.html', {user: user})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	
+
