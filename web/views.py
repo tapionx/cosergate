@@ -37,3 +37,5 @@ def cosergate_signup(request):
 	user.last_name = surname
 	user.save()
 	return HttpResponse('user created')
+	
+def 
