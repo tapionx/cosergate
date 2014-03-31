@@ -209,9 +209,14 @@
 					//var csrf = $('#login input[name="csrfmiddlewaretoken"]').val();
 					$.post('/login', 
 						{username: username, password: password, csrfmiddlewaretoken: '{{ csrf_token }}'}, 
-						function(data){
+						function(data) {
 							if (data == 'login_succeed') {
-								$('#main').fadeOut(function(){$('#home').fadeIn()});
+								$.get('/home', 
+									function(data) {
+										$('#main').fadeOut(function() {
+											$('body').append(data);
+										}); 
+									});
 							}
 							if (data == 'login_failed') {
 								alert('wrong name or password');

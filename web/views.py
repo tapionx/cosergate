@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.http import HttpResponse
+from django.contrib.auth.decorators import login_required
 
 def index(request):
 	if request.user.is_authenticated():
@@ -38,4 +39,7 @@ def cosergate_signup(request):
 	user.save()
 	return HttpResponse('user created')
 	
-def 
+@login_required(login_url='/')
+def home(request):
+	return render(request, 'web/home.html', {})
+	
