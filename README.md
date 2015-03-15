@@ -1,13 +1,17 @@
 cosergate
 =========
 
-- Install
+Install
+----
 
 Install django
+
 Install django-avatar
+
 clone this repo
 
-- Usage
+Usage
+----
 
 Simply manage your money!
 
